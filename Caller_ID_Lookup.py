@@ -1,24 +1,17 @@
-# import module
+# Python
 import requests
-import pandas as pd
 from bs4 import BeautifulSoup
 
-# link for extract html data
-# Making a GET request
-
 def getdata(url):
-	r=requests.get(url)
-	return r.text
-# API key
-# Enter your own API key instead of 'YOUR API KEY'
+    r=requests.get(url)
+    return r.text
+
 api = '63e6921030a7cf5ea08dd54da4201b2f'
 
-# number and country code
-number = '647730104'
-country = 'MA'
+# Ask the user for their number and country code
+number = input("Please enter your number: ")
+country = input("Please enter your country code: ")
 
-# pass Your API, number and country code
-# in getdata function
-htmldata=getdata('http://apilayer.net/api/validate?access_key='+api+'&number='+number+'&country_code='+country+'&format=1')
+htmldata = getdata('http://apilayer.net/api/validate?access_key=' + api + '&number=' + number + '&country_code=' + country + '&format=1')
 soup = BeautifulSoup(htmldata, 'html.parser')
 print(soup)
